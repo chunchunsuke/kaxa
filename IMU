@@ -7,32 +7,23 @@ long timer = 0;                                //"long" is a sequence from -infi
 
 void setup() {
   Serial.begin(9600);
-  Wire.begin();
+  Wire.begin();                                // Wire and 2 other above are defualt command for sensor from library. Must have it. 
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
 }
 
 void loop() {
-  mpu6050.update();
+  mpu6050.update();                             
 
-  if(millis() - timer >250 ){
+  if(millis() - timer >250 ){                   // millis count in milisecond after Arduino start
     
-    Serial.println("=======================================================");
-    Serial.print("temp : ");Serial.println(mpu6050.getTemp());
+    Serial.println("=======================================================");     //Print acceleration and angle acceleration of axis X, Y, Z
     Serial.print("accX : ");Serial.print(mpu6050.getAccX());
     Serial.print("\taccY : ");Serial.print(mpu6050.getAccY());
     Serial.print("\taccZ : ");Serial.println(mpu6050.getAccZ());
   
-    Serial.print("gyroX : ");Serial.print(mpu6050.getGyroX());
-    Serial.print("\tgyroY : ");Serial.print(mpu6050.getGyroY());
-    Serial.print("\tgyroZ : ");Serial.println(mpu6050.getGyroZ());
-  
     Serial.print("accAngleX : ");Serial.print(mpu6050.getAccAngleX());
     Serial.print("\taccAngleY : ");Serial.println(mpu6050.getAccAngleY());
-  
-    Serial.print("gyroAngleX : ");Serial.print(mpu6050.getGyroAngleX());
-    Serial.print("\tgyroAngleY : ");Serial.print(mpu6050.getGyroAngleY());
-    Serial.print("\tgyroAngleZ : ");Serial.println(mpu6050.getGyroAngleZ());
     
     Serial.print("angleX : ");Serial.print(mpu6050.getAngleX());
     Serial.print("\tangleY : ");Serial.print(mpu6050.getAngleY());
