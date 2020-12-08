@@ -3,7 +3,7 @@
 
 MPU6050 mpu6050(Wire);
 
-long timer = 0;
+long timer = 0; //sequence from -infinite to + infinite
 
 void setup() {
   Serial.begin(9600);
