@@ -92,13 +92,13 @@ acczangle = (atan2(AcX,AcY) * RAD_TO_DEG);
  Serial.print("gZ: ");
  Serial.print(GyZ);
  Serial.print("        ");
- Serial.print("Temp: ");
+ Serial.print("T: ");
  Serial.print(T, 2);
  Serial.print("*C, "); 
  Serial.print("    ");
- Serial.print("Pression: ");
- Serial.print(P, 2);
- Serial.println(" mbar, ");
+ Serial.print("P: ");
+ Serial.print(P*100, 2);
+ Serial.println(" pa ");
  delay(100);
  
   
