@@ -1,6 +1,8 @@
 #include <Wire.h>
 #define ADDRESS_SENSOR 0x77 
-
+#include <Servo.h>
+int k=13;
+Servo myservo;
 int16_t  ac1, ac2, ac3, b1, b2, mb, mc, md;
 uint16_t ac4, ac5, ac6;
 
@@ -23,6 +25,8 @@ void setup()
   mc  = read_2_bytes(0xBC);
   md  = read_2_bytes(0xBE);                          
   delay(100);
+  myservo.attach(9);
+  pinMode(a,OUTPUT);
 }
 
 void loop()
@@ -43,8 +47,15 @@ void loop()
   Serial.print(H);
   Serial.println("m");
 
-  delay(1000);                               
+  if( H <=10){
+    myservo.write(0);
+    digitalWrite(k,HIGH);
+  }
   
+  if(H > 10){
+    myservo.write(90);
+    digitalWrite(k,LOW);
+  }
 }
 float pressure(int32_t b5)
 {
